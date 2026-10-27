@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Portfolio Claude Eric</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-page" id="loginPage">
+  <div class="login-card">
+    <div class="login-logo">CA</div>
+    <h2>Administration</h2>
+    <p>Portfolio Claude Eric ALIMA KANGA</p>
+    <form id="loginForm">
+      <div class="input-group">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <input type="text" id="loginUser" placeholder="Nom d'utilisateur" required placeholder="Nom d'utilisateur">
+      </div>
+      <div class="input-group">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <input type="password" id="loginPass" placeholder="Mot de passe" required placeholder="Votre mot de passe">
+        <button type="button" class="toggle-pass" id="togglePass">👁</button>
+      </div>
+      <label class="remember"><input type="checkbox" id="rememberMe"> Se souvenir de moi</label>
+      <button type="submit" class="btn-login">Se connecter</button>
+    </form>
+    <div class="login-hint" style="display:none;">
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard" style="display:none;">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand">
+      <div class="side-logo">CA</div>
+      <span>Admin</span>
+    </div>
+    <nav class="side-nav">
+      <a href="#" class="side-link active" data-page="dash">
+        <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        <span>Tableau de bord</span>
+      </a>
+      <a href="#" class="side-link" data-page="projects">
+        <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+        <span>Réalisations</span>
+      </a>
+      <a href="#" class="side-link" data-page="certs">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+        <span>Certifications</span>
+      </a>
+      <a href="#" class="side-link" data-page="msgs">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Messages</span>
+        <span class="msg-badge" id="msgBadge">0</span>
+      </a>
+      <a href="#" class="side-link" data-page="settings">
+        <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.16 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        <span>Paramètres</span>
+      </a>
+    </nav>
+    <div class="side-foot">
+      <a href="../visiteur/index.html" target="_blank" class="side-link">
+        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        <span>Voir le site</span>
+      </a>
+      <button class="side-link logout" id="logoutBtn">
+        <svg viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.89-2-2-2z"/></svg>
+        <span>Déconnexion</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="topbar-user">
+        <span id="userName">Admin</span>
+        <div class="user-avatar">👤</div>
+      </div>
+    </header>
+
+    <!-- PAGE: DASHBOARD -->
+    <div class="page active" id="page-dash">
+      <div class="page-head">
+        <h1>Tableau de bord</h1>
+        <p>Bienvenue dans votre espace d'administration</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box blue">
+          <div class="stat-icon">📁</div>
+          <div><h3 id="stProjects">0</h3><p>Réalisations</p></div>
+        </div>
+        <div class="stat-box green">
+          <div class="stat-icon">📜</div>
+          <div><h3 id="stCerts">0</h3><p>Certifications</p></div>
+        </div>
+        <div class="stat-box orange">
+          <div class="stat-icon">✉</div>
+          <div><h3 id="stMsgs">0</h3><p>Messages</p></div>
+        </div>
+        <div class="stat-box purple">
+          <div class="stat-icon">👁</div>
+          <div><h3 id="stVisits">0</h3><p>Visites</p></div>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-head">📈 Activité récente</div>
+          <div class="activity-list" id="activityList"><p style="color:var(--gray);padding:20px;">Aucune activité</p></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-head">✉ Derniers messages</div>
+          <div class="last-msgs" id="lastMsgs"><p style="color:var(--gray);padding:20px;">Aucun message</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: PROJECTS -->
+    <div class="page" id="page-projects">
+      <div class="page-head">
+        <h1>Gestion des Réalisations</h1>
+        <button class="btn btn-primary" id="btnAddProject">➕ Ajouter</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Image</th><th>Titre</th><th>Catégorie</th><th>Date</th><th>Tech</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="tbProjects"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE: CERTIFICATIONS -->
+    <div class="page" id="page-certs">
+      <div class="page-head">
+        <h1>Gestion des Certifications</h1>
+        <button class="btn btn-primary" id="btnAddCert">➕ Ajouter</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Image</th><th>Titre</th><th>Organisme</th><th>Date</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="tbCerts"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE: MESSAGES -->
+    <div class="page" id="page-msgs">
+      <div class="page-head">
+        <h1>Messages reçus</h1>
+        <div class="page-actions">
+          <button class="btn btn-secondary" id="btnReadAll">✓✓ Tout marquer lu</button>
+          <button class="btn btn-danger" id="btnDeleteAllMsgs">Supprimer tous les messages</button>
+        </div>
+      </div>
+      <div class="msgs-list" id="msgsList"></div>
+    </div>
+
+    <!-- PAGE: SETTINGS -->
+    <div class="page" id="page-settings">
+      <div class="page-head"><h1>Paramètres</h1></div>
+      <div class="settings-grid">
+        <div class="settings-card">
+          <div class="settings-card-head">👤 Informations personnelles</div>
+          <form id="formProfile">
+            <div class="form-row">
+              <div class="form-group"><label>Nom complet</label><input type="text" id="pName" value="Claude Eric ALIMA KANGA"></div>
+              <div class="form-group"><label>Titre</label><input type="text" id="pTitle" value="Ingénieur Systèmes Réseaux & Développement Logiciel"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email</label><input type="email" id="pEmail" value="alimakangaclaudeeric@gmail.com"></div>
+              <div class="form-group"><label>Téléphone 1</label><input type="text" id="pPhone1" value="+237 656 896 602"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Téléphone 2</label><input type="text" id="pPhone2" value="+237 680 658 148"></div>
+              <div class="form-group"><label>Pays</label><input type="text" id="pCountry" value="Cameroun"></div>
+            </div>
+            <div class="form-group"><label>Biographie</label><textarea id="pBio" rows="4">Passionné par les technologies de l'information, je conçois des solutions robustes en matière d'infrastructure réseau et de développement logiciel sur mesure.</textarea></div>
+            <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-head">🖼️ Photos du portfolio</div>
+          <form id="formPortfolioPhotos">
+            <div class="form-group">
+              <label for="profilePhotoFile">Photo d’accueil</label>
+              <input type="file" id="profilePhotoFile" accept="image/*">
+              <div id="profilePhotoPreview" style="display:none;margin-top:12px;"></div>
+            </div>
+            <div class="form-group">
+              <label for="aboutPhotoFile">Photo « À propos »</label>
+              <input type="file" id="aboutPhotoFile" accept="image/*">
+              <div id="aboutPhotoPreview" style="display:none;margin-top:12px;"></div>
+            </div>
+            <p class="image-storage-note">Choisissez une image sur votre appareil (2 Mo maximum par image). Les photos sont conservées dans ce navigateur et ne sont pas envoyées en ligne.</p>
+            <button type="submit" class="btn btn-primary">💾 Enregistrer les photos</button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-head">🔒 Sécurité</div>
+          <form id="formSecurity">
+            <div class="form-group"><label>Nom d'utilisateur</label><input type="text" id="sUser" placeholder="Nom d'utilisateur"></div>
+            <div class="form-group"><label>Ancien mot de passe</label><input type="password" id="sOld" placeholder="••••••••"></div>
+            <div class="form-group"><label>Nouveau mot de passe</label><input type="password" id="sNew" placeholder="Min. 6 caractères"></div>
+            <div class="form-group"><label>Confirmer</label><input type="password" id="sConfirm" placeholder="Répétez le mot de passe"></div>
+            <button type="submit" class="btn btn-primary">🔑 Changer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL PROJECT -->
+<div class="modal" id="modalProject">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="mpTitle">Ajouter une réalisation</h3><button class="mclose" onclick="closeModals()">&times;</button></div>
+    <form id="formProject">
+      <input type="hidden" id="mpId">
+      <div class="form-row">
+        <div class="form-group"><label>Titre *</label><input type="text" id="mpTitleInput" required></div>
+        <div class="form-group"><label>Catégorie *</label>
+          <select id="mpCat" required>
+            <option value="reseau">Réseau & Système</option>
+            <option value="dev">Développement</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label>Description courte *</label><input type="text" id="mpDesc" required placeholder="Texte affiché sur la carte"></div>
+      <div class="form-group"><label>Description complète *</label><textarea id="mpFull" rows="4" required></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label for="mpFile">Image du projet</label><input type="file" id="mpFile" accept="image/*"><div id="mpPreview" style="display:none;margin-top:12px;"></div><p class="image-storage-note">Choisissez une image sur votre appareil. Elle sera enregistrée dans ce navigateur, sans être envoyée en ligne (2 Mo maximum).</p></div>
+        <div class="form-group"><label>Date</label><input type="text" id="mpDate" placeholder="Ex: 2024"></div>
+      </div>
+      <div class="form-group"><label>Technologies (séparées par des virgules)</label><input type="text" id="mpTech" placeholder="Ex: HTML, CSS, JavaScript"></div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" onclick="closeModals()">Annuler</button>
+        <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL CERT -->
+<div class="modal" id="modalCert">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="mcTitle">Ajouter une certification</h3><button class="mclose" onclick="closeModals()">&times;</button></div>
+    <form id="formCert">
+      <input type="hidden" id="mcId">
+      <div class="form-group"><label>Titre *</label><input type="text" id="mcTitleInput" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>Organisme *</label><input type="text" id="mcIssuer" required></div>
+        <div class="form-group"><label>Date</label><input type="text" id="mcDate" placeholder="Ex: 2024"></div>
+      </div>
+      <div class="form-group"><label for="mcFile">Image de la certification</label><input type="file" id="mcFile" accept="image/*"><div id="mcPreview" style="display:none;margin-top:12px;"></div><p class="image-storage-note">Choisissez une image sur votre appareil. Elle sera enregistrée dans ce navigateur, sans être envoyée en ligne (2 Mo maximum).</p></div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" onclick="closeModals()">Annuler</button>
+        <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL MSG -->
+<div class="modal" id="modalMsg">
+  <div class="modal-box">
+    <div class="modal-head"><h3>Détail du message</h3><button class="mclose" onclick="closeModals()">&times;</button></div>
+    <div id="msgContent" style="padding:24px;"></div>
+  </div>
+</div>
+
+<!-- NOTIFICATIONS -->
+<div id="notifBox"></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
